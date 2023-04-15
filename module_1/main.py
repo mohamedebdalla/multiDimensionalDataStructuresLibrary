@@ -1,12 +1,15 @@
 import pytest
-from SLL import SLL
-from DLL import DLL
-from CSLL import CSLL
-from CDLL import CDLL
-from QueueLL import QueueLL
-from StackLL import StackLL
-from DNode import DNode
-from SNode import SNode
+import sys
+sys.path.append('C:/Users/Moe/338_finalProject')
+# from myLib.datastructures.nodes.TNode import TNode
+from module_1.myLib.datastructures.Linear.SLL import SLL
+from module_1.myLib.datastructures.Linear.DLL import DLL
+from module_1.myLib.datastructures.Linear.CSLL import CSLL
+from module_1.myLib.datastructures.Linear.CDLL import CDLL
+from module_1.myLib.datastructures.Linear.QueueLL import QueueLL
+from module_1.myLib.datastructures.Linear.StackLL import StackLL
+from module_1.myLib.datastructures.nodes.DNode import DNode
+from module_1.myLib.datastructures.nodes.SNode import SNode
 
 # Testing SLL
 def test_SLL_InsertHead():
