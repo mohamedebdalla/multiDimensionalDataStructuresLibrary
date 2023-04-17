@@ -6,5 +6,5 @@ setup(name='Group45',
       author='Aser-Ghobara',
       author_email ='aser.ghobara@ucalgary.ca',
       packages=setuptools.find_packages(),
-      install_requires=[],
+      install_requires=['pytest'],
       )
