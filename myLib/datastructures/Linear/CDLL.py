@@ -1,8 +1,5 @@
-import sys
-sys.path.append('/myLib/datastructures/nodes/DNode')
-
-from DNode import DNode
-from DLL import DLL
+from mylib.datastructures.Linear.DLL import DLL
+from mylib.datastructures.nodes.DNode import DNode
 
 class CDLL(DLL):
     def __init__(self, head=None):
@@ -10,6 +7,20 @@ class CDLL(DLL):
         if head is not None:
             self.head.prev = self.tail
             self.tail.next = self.head
+
+    def Insert(self, node, pos):
+        if pos == 0:
+            self.InsertHead(node)
+            return
+        curr = self.head
+        new_node = DNode(node.data)
+        for i in range(pos-1):
+            curr = curr.next
+        new_node.next = curr.next
+        curr.next = new_node
+        new_node.prev = curr
+        new_node.next.prev = new_node
+        self.length += 1
 
     def InsertHead(self, node):
         super().InsertHead(node)
@@ -56,3 +67,13 @@ class CDLL(DLL):
             node.prev.next = node.next
             node.next.prev = node.prev
             self.size -= 1
+
+    def isSorted(self):
+            if self.head is None:
+                return True
+            current = self.head
+            while current.next != self.head:
+                if current.data > current.next.data:
+                    return False
+                current = current.next
+            return True

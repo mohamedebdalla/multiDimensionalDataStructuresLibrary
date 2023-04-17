@@ -1,7 +1,5 @@
-import sys
-sys.path.append('/myLib/datastructures/nodes/DNode')
 
-from DNode import DNode
+from mylib.datastructures.nodes.DNode import DNode
 
 class SLL:
     def __init__(self, head=None):
@@ -148,3 +146,10 @@ class SLL:
             print(current.data)
             current = current.next
     
+    def isSorted(self):
+        current = self.head
+        while current is not None and current.next is not None:
+            if current.data > current.next.data:
+                return False
+            current = current.next
+        return True

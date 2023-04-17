@@ -1,8 +1,4 @@
-import sys
-sys.path.append('/myLib/datastructures/nodes/DNode')
-
-from DNode import DNode
-from SLL import SLL
+from  mylib.datastructures.Linear.SLL import SLL
 
 class StackLL(SLL):
     def __init__(self, top=None):
@@ -36,3 +32,20 @@ class StackLL(SLL):
     
     def Delete(self, node):
         pass
+
+    def isEmpty(self):
+        return self.head is None
+    
+    def push(self, node):
+        super().InsertHead(node)
+    
+    def pop(self):
+        node = self.head
+        self.DeleteHead()
+        return node.data
+    
+    def peek(self):
+        return self.head.data
+
+
+

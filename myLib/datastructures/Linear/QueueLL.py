@@ -1,5 +1,6 @@
-from DNode import DNode
-from SLL import SLL
+from  mylib.datastructures.nodes.DNode import DNode
+from  mylib.datastructures.Linear.SLL import SLL
+
 
 class QueueLL(SLL):
     def __init__(self):

@@ -1,8 +1,5 @@
-import sys
-sys.path.append('/myLib/datastructures/nodes/DNode')
+from  mylib.datastructures.Linear.SLL import SLL
 
-from DNode import DNode
-from SLL import SLL
 
 class CSLL(SLL):
     def __init__(self, head=None):
@@ -19,7 +16,15 @@ class CSLL(SLL):
     def InsertTail(self, node):
         super().InsertTail(node)
         self.tail.next = self.head
-    
+
+    def Insert(self, node, pos):
+        if pos == 0:
+            self.InsertHead(node)
+            return node
+        elif pos >= self.size:
+            self.InsertTail(node)
+            return node
+        
     def DeleteHead(self):
         if self.head is None:
             return
@@ -62,3 +67,36 @@ class CSLL(SLL):
                 if node == self.tail:
                     self.tail = current
         self.tail.next = self.head
+    
+    def isSorted(self):
+        if self.head is None:
+            return True
+        
+        current = self.head
+        while current.next != self.head:
+            if current.data > current.next.data:
+                return False
+            current = current.next
+        return True
+    
+    def SortedInsert(self, node):
+        if self.head is None:
+            self.InsertHead(node)
+            return
+
+        if node.data < self.head.data:
+            self.InsertHead(node)
+            return
+
+        if node.data > self.tail.data:
+            self.InsertTail(node)
+            return
+
+        current = self.head
+        while current.next != self.head and current.next.data < node.data:
+            current = current.next
+
+        node.next = current.next
+        current.next = node
+        self.size += 1
+

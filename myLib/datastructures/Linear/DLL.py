@@ -1,14 +1,7 @@
-import sys
-sys.path.append('/myLib/datastructures/nodes/DNode')
-
-from DNode import DNode
-from SLL import SLL
+from mylib.datastructures.nodes.DNode import DNode
+from mylib.datastructures.Linear.SLL import SLL
 
 class DLL(SLL):
-    class DNode(DNode):
-        def __init__(self, data=None, next=None, prev=None):
-            super().__init__(data, next)
-            self.prev = prev
 
     def __init__(self, head=None):
         super().__init__(head)
@@ -35,10 +28,13 @@ class DLL(SLL):
 
     def Insert(self, node, position):
         super().Insert(node, position)
+        if position == 0:
+            self.head = node
         if node.next is not None:
             node.next.prev = node
         if node.prev is not None:
             node.prev.next = node
+
 
     def DeleteHead(self):
         if self.head is None:
@@ -73,3 +69,11 @@ class DLL(SLL):
             node.prev.next = node.next
             node.next.prev = node.prev
             self.size -= 1
+
+    def isSorted(self):
+        node = self.head
+        while node is not None and node.next is not None:
+            if node.data > node.next.data:
+                return False
+            node = node.next
+        return True
