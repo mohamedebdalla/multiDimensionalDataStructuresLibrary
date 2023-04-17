@@ -1,7 +1,7 @@
 from setuptools import setup
 import setuptools
-setup(name='Group45',
-      version='1.0',
+setup(name='Group_45',
+      version='1.1',
       description='ENSF 338 Final Project',
       author='Aser-Ghobara',
       author_email ='aser.ghobara@ucalgary.ca',
